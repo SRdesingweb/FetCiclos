@@ -2,30 +2,35 @@
 
 const cycleModel = require('../models/cycle');
 const rolesModel = require('../models/rol');
+const requestDegreeModel = require('../models/requestDegree');
 
-async function list (req = null){
-    console.log("listando cycle");
-    let data;
-    data = await cycleModel.list(req.params.id);
+async function list(req = null) {
+    console.log("listando cycle e info");
+    let data = {};
+    data.cycle = await cycleModel.list(req.params.id);
+    data.info = await requestDegreeModel.list(req);
     return data;
 }
 
-async function listAll (req = null){
+async function listAll(req = null) {
+    console.log("Listando cycle con rol e info");
     const data = {};
-    data.users = await cycleModel.listAll();
-    data.roles = await rolesModel.listAll(); // pool.query('SELECT roles.* FROM roles')
+    data.cycle = await cycleModel.list();
+    /* Se debe enviar id usuario, sino, devolverá todo */
+    data.info = await requestDegreeModel.list(req);
+    
     console.log(data);
     return data;
 }
 
-async function add (req = null){
+async function add(req = null) {
     const added = await users.addUser(req.body);
     return added;
 }
 
-async function update (req){
+async function update(req) {
     const updated = await users.addUser(req);
     return updated;
 }
 
-module.exports = {listAll, add, update, list};
+module.exports = { listAll, add, update, list };

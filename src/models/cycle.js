@@ -11,28 +11,20 @@ async function list(req) {
     return cycle;
 }
 
-async function listAll(req) {
-    let sql = 'SELECT cycle.* FROM cycle';
-    const cycle = await pool.query(sql);
-    console.log("list all");
-    console.log(cycle);
+async function add(req) {
+    const cycle = await pool.query('INSERT INTO cycle set ?', [req]);
     return cycle;
 }
 
-async function addEps(req) {
-    const cycle = await pool.query('insert into cycle set ?', [req]);
+async function edit(fields, id) {
+    const cycle = await pool.query('UPDATE `cycle` SET `name` = ? WHERE `cycle`.`id` = ?', [fields.name, id]);
     return cycle;
 }
 
-async function editEps(fields, id) {
-    const cycle = await pool.query('UPDATE `cycle` SET `name` = ?, `telephone` = ?, `email` = ?, `address` = ? WHERE `cycle`.`id` = ?', [fields.name, fields.telephone, fields.email, fields.address, id]);
-    return cycle;
-}
-
-async function deleteEps(req) {
-    const cycle = await pool.query("delete FROM cycle WHERE id =?", [req]);
+async function del(req) {
+    const cycle = await pool.query("DELETE FROM cycle WHERE id =?", [req]);
     return cycle;
 }
 
 
-module.exports = { listAll, addEps, editEps, deleteEps, list };
+module.exports = { list, add, edit, del};

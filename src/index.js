@@ -37,6 +37,7 @@ app.use(require('./routes/authentication'));
 app.use('/user', require('./routes/user'));
 app.use('/rol', require('./routes/rol'));
 app.use('/cycle', require('./routes/cycle'));
+app.use('/request-degree', require('./routes/requestDegree'));
 
 //public
 app.unsubscribe(express.static(path.join(__dirname, 'public')));

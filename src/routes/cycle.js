@@ -5,11 +5,10 @@ const cycleController = require('../controllers/cycle');
 
 router.get('/', async (req, res) => {
     console.log("Estoy en la ruta listar ciclo");
-    const cycle = await cycleController.list(req);
-    // res.json({ 'cycle': cycle });
+    const data = await cycleController.list(req);
     res.render('cycle/list', {
-        "cycle": cycle,
-        // "rol": data.rol
+        "cycle": data.cycle,
+        "info": data.info
     });
 });
 
