@@ -4,11 +4,11 @@ SELECT
 	cycle.id, 
 	cycle.`name`, 
 	ucr.user_id, 
-	dr.`from`, 
+	dr.`degree_request`, 
 	dr.degree_project_name, 
 	dr.observation, 
 	dr.state, 
-	dr.degree_date, 
+    DATE_FORMAT(dr.degree_date, "%m %d %y") AS degree_date,
 	dr.create_time
 FROM
 	cycle
