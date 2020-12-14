@@ -4,16 +4,7 @@ const router = express.Router();
 const pool = require('../database');
 const rolesController = require('../controllers/rol');
 
-
-router.get('/delete/:id', async (req, res) => {
-
-    const {id}= req.params;
-    await pool.query("delete FROM roles WHERE id =?", [id])
-    res.redirect('../add');
-   
-});
-
-router.get('/add', async (req, res) => {
+router.get('/', async (req, res) => {
     const roles = await rolesController.listAll();
     res.render('roles/list', { roles });
 });
@@ -33,6 +24,14 @@ router.post('/add', async (req, res) => {
     await rolesController.addRol(req);
 
     res.redirect('./add');
+});
+
+router.get('/delete/:id', async (req, res) => {
+
+    const {id}= req.params;
+    await pool.query("delete FROM roles WHERE id =?", [id])
+    res.redirect('../add');
+   
 });
 
 module.exports = router;
