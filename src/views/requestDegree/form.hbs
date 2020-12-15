@@ -8,7 +8,15 @@
                     {{name}}
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="../edit" method="post">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="name">Nombre del Alumno</label>
+                                <input required type="text" class="form-control" id="name"
+                                    name="name" value="{{from}}"
+                                    placeholder="Nombre del Aspirante a grado">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="form-group">
                                 <label for="degree_project_name">Proyecto de grado</label>
@@ -29,16 +37,20 @@
                             <div class="form-group">
                                 <label for="degree_date">Fecha de graduación {{degree_date}}</label>
                                 <input required type="date" class="form-control" id="degree_date" name="degree_date"
-                                    value="{{degree_date}}" placeholder="02/05/2021">
+                                    value="{{degree_date}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="state">Estado de la aplicación</label>
-                            <select class="form-control" id="state" value="{{state}}">
+                            <select class="form-control" id="state" name="state" value="{{state}}">
                                 <option value="1">Pendiente</option>
                                 <option value="2">Aceptado</option>
                                 <option value="3">Denegado</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <input required type="hidden" class="form-control" id="id" name="id"
+                                value="{{id}}">
                         </div>
                         <button class="btn btn-primary mb-2"> Salvar </button>
                     </form>

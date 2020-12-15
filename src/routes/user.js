@@ -3,8 +3,7 @@ const router = express.Router();
 
 const pool = require('../database');
 const usersController = require('../controllers/user');
-// const rolesController = require('../controllers/roles');
-// const epssController = require('../controllers/epss');
+
 
 router.get('/add', async (req, res) => {
     const data = await usersController.listAll(req); // pool.query('SELECT users.*, roles.`name` as role_name, epss.`name` as eps_name FROM users INNER JOIN roles ON users.role_id = roles.id INNER JOIN epss ON users.eps_id = epss.id ')

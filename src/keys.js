@@ -3,6 +3,6 @@
         host: "localhost",
         user: "root",
         password: "",
-        database: "ciclos_propedeuticos",
+        database: "ciclos_propedeuticos_2",
     }
 };

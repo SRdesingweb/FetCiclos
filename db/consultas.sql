@@ -1,10 +1,10 @@
+/*
 use ciclos_propedeuticos_2;
-
+*/ /*
 SELECT
 	cycle.id, 
 	cycle.`name`, 
 	ucr.user_id, 
-	dr.`degree_request`, 
 	dr.degree_project_name, 
 	dr.observation, 
 	dr.state, 
@@ -20,5 +20,15 @@ FROM
 	degree_request AS dr
 	ON 
 		ucr.id = dr.id
-    
 
+*/
+SELECT
+	*
+FROM
+	user_cycle_request
+	RIGHT JOIN
+	cycle
+	ON 
+		user_cycle_request.cycle_id = cycle.id
+WHERE
+	user_cycle_request.user_id = 1 

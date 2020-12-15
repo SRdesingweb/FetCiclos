@@ -6,16 +6,21 @@ const userCycleRequestModel = require('../models/userCycleRequest');
 const pool = require('../database');
 
 
+async function list(req, res){
+    console.log("el req params id "+ req.params.id);
+    const id = req.params.id;
+    const data = await requestDegreeModel.list(id);
+    return data;
+}
 
 async function add(req, res) {
     console.log("body: ");
     console.log(req.body);
-    console.log("params: ");
-    console.log(req.params);
     let data = {};
-    const { degree_project_name } = req.body;
+    const { degree_project_name, name } = req.body;
     const newRequestDegree = {
         // from: req.user.name
+        from: name,
         degree_project_name,
     };
     data.requestDegree = await requestDegreeModel.add(newRequestDegree);
@@ -29,8 +34,38 @@ async function add(req, res) {
     }
     data.userCycleRequest = await userCycleRequestModel.add(newUserCycleRequest);
 
-    req.flash('success', 'La solicitud se añadió');
+    req.flash('success', 'La solicitud se añadió correctamente');
     res.redirect("../../cycle/");
 }
 
-module.exports = { add };
+async function edit(req, res) {
+    console.log("body: ");
+    console.log(req.body);
+    let data = {};
+    let { name, degree_project_name, observation, state, degree_date } = req.body;
+    let id = req.body.id;
+
+    const newRequestDegree = {
+        // from: req.user.name
+        "from": name,
+        degree_project_name,
+        observation,
+        state,
+        degree_date,
+    };
+    console.log(newRequestDegree);
+    // data.requestDegree = await requestDegreeModel.edit(newRequestDegree, id);
+    data.requestDegree = await pool.query('UPDATE `request_degree` SET ? WHERE `request_degree`.`id` = ?', [newRequestDegree, id], function (error, results, fields) {
+        if (error) {
+           console.log(error.code);
+           console.log(error.sqlMessage);
+        }
+      });
+    
+    console.log(data.requestDegree);
+
+    req.flash('success', 'La solicitud se modificó correctamente');
+    res.redirect("../../cycle/");
+}
+
+module.exports = { add, list, edit };

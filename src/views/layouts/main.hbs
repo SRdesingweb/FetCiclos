@@ -30,12 +30,13 @@
     }
   </style>
   <!-- Custom styles for this template -->
-  {{!-- <link href="starter-template.css" rel="stylesheet"> --}}
+  {{!--
+  <link href="starter-template.css" rel="stylesheet"> --}}
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <a class="navbar-brand" href="#">
       <img src="https://www.fet.edu.co/wp-content/themes/fet/images/logo.png" alt="">
     </a>
@@ -45,7 +46,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="./">Login <span class="sr-only">(current)</span></a>
         </li>
@@ -57,7 +58,22 @@
   </nav>
 
   <div style="margin-top: 8%;"></div>
-  {{#if success}}
+  <main role="main" class="container">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron" style="margin-top: 5%;">
+      <div class="container">
+        <h1 class="display-3">Fet Ciclos Propedéuticos!</h1>
+        <p> Aquí puedes solicitar la aprobación de grado para cada uno de los ciclos propedéutocos!
+        </p>
+      </div>
+    </div>
+
+
+  </main>
+
+  <div class="container">
+
+    {{#if success}}
     <div class="container p-4">
       <div class="row">
         <div class="col-md-8 mx-auto">
@@ -70,30 +86,23 @@
         </div>
       </div>
     </div>
-  {{/if}}
-  <main role="main" class="container">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" style="margin-top: 5%;">
-      <div class="container">
-        <h1 class="display-3">Fet Ciclos Propedéuticos!</h1>
-        <p> Aquí puedes solicitar la aprobación de grado para cada uno de los ciclos propedéutocos!
-        </p>
-      </div>
-    </div>
-
-  </main>
-
-  <div class="container">
+    {{/if}}
 
     {{{body}}}
 
   </div>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+    
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
+    
   <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
 </body>
 
