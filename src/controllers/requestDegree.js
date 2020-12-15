@@ -54,16 +54,9 @@ async function edit(req, res) {
         degree_date,
     };
     console.log(newRequestDegree);
-    // data.requestDegree = await requestDegreeModel.edit(newRequestDegree, id);
-    data.requestDegree = await pool.query('UPDATE `request_degree` SET ? WHERE `request_degree`.`id` = ?', [newRequestDegree, id], function (error, results, fields) {
-        if (error) {
-           console.log(error.code);
-           console.log(error.sqlMessage);
-        }
-      });
-    
-    console.log(data.requestDegree);
+    data.requestDegree = await requestDegreeModel.edit(newRequestDegree, id);
 
+    console.log(data.requestDegree);
     req.flash('success', 'La solicitud se modificó correctamente');
     res.redirect("../../cycle/");
 }
