@@ -7,7 +7,7 @@ const pool = require('../database');
 
 
 
-async function add(req) {
+async function add(req, res) {
     console.log("body: ");
     console.log(req.body);
     console.log("params: ");
@@ -28,7 +28,9 @@ async function add(req) {
         "request_degree_id": data.requestDegree.insertId,
     }
     data.userCycleRequest = await userCycleRequestModel.add(newUserCycleRequest);
-    return data;
+
+    req.flash('success', 'La solicitud se añadió');
+    res.redirect("../../cycle/");
 }
 
 module.exports = { add };
