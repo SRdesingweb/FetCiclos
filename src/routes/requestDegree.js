@@ -15,12 +15,7 @@ router.get('/add/', async (req, res) => {
 });
 
 router.post('/add/', async (req, res) => {
-    // console.log(req.body);
-    const data = requestDegreeController.add(req, res);
-    console.log("Resultado final");
-    console.log(data);
-    res.redirect("../../cycle/");
-    req.flash('success', 'La solicitud se añadió');
+    requestDegreeController.add(req, res);
 });
 
 router.get('/edit/:id', async (req, res) => {
