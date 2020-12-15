@@ -4,27 +4,22 @@ const router = express.Router();
 const requestDegreeController = require('../controllers/requestDegree');
 
 router.get('/', async (req, res) => {
-    res.status(404).send('Sorry, cant find that');
-    // console.log("Estoy en la ruta listar requestDegree");
-    // const data = await requestDegreeController.list(req);
-    // res.render('cycle/list', {
-    //     "requestDegree": data,
-    //     // "info": data.info
-    // });
+    res.send("hola");
 });
 
-// router.get('/:id', async (req, res) => {
-//     console.log("Estoy en la ruta listar ciclo, puede tener id");
-//     const data = await requestDegreeController.list(req);
-//     res.render('requestDegree/list', {
-//         "requestDegree": data,
-//     });
-// });
+router.get('/add/', async (req, res) => {
+    // console.log(req.body);
+    // const requestDegree = requestDegreeController.add(req, res);
+    // console.log(requestDegree);|
+    res.send("hola add");
+});
 
-router.get('/add', async (req, res) => {
-    console.log("Estoy en la ruta añadir requestDegree");
-    const data = await requestDegreeController.list(req);
-    res.render('requestDegree/form', { "requestDegree": data });
+router.post('/add/', async (req, res) => {
+    // console.log(req.body);
+    const data = requestDegreeController.add(req, res);
+    console.log("Resultado final");
+    console.log(data);
+    res.status(200).json(data);
 });
 
 router.get('/edit/:id', async (req, res) => {
@@ -34,19 +29,6 @@ router.get('/edit/:id', async (req, res) => {
         "requestDegree": data,
         // "rol": data.rol
     });
-});
-
-router.post('/add', async (req, res) => {
-    // await pool.query('INSERT INTO cycle SET ?', [req])
-    // res.redirect('./add');
-    const roles = await requestDegreeController.add();
-    res.render('requestDegree/form', { roles });
-});
-
-router.get('/delete/:id', async (req, res) => {
-    const { id } = req.params;
-    await pool.query("DELETE FROM cycle WHERE id =?", [id])
-    res.redirect('../add');
 });
 
 module.exports = router;

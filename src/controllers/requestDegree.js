@@ -2,33 +2,33 @@
 
 const cycleModel = require('../models/cycle');
 const requestDegreeModel = require('../models/requestDegree');
+const userCycleRequestModel = require('../models/userCycleRequest');
+const pool = require('../database');
 
-async function list(req = null) {
-    console.log("listando requestDegree");
+
+
+async function add(req) {
+    console.log("body: ");
+    console.log(req.body);
+    console.log("params: ");
+    console.log(req.params);
     let data = {};
-    data.requestDegree = await requestDegreeModel.list(req);
-    return data.requestDegree;
-}
-
-async function listAll(req = null) {
-    console.log("Listando cycle con rol e info");
-    const data = {};
-    data.cycle = await cycleModel.list();
-    /* Se debe enviar id usuario, sino, devolverá todo */
-    data.info = await requestDegreeModel.list(req);
+    const { degree_project_name } = req.body;
+    const newRequestDegree = {
+        // from: req.user.name
+        degree_project_name,
+    };
+    data.requestDegree = await requestDegreeModel.add(newRequestDegree);
     
-    console.log(data);
+    const cicle_id = parseInt(req.body.cycle_id);
+    const newUserCycleRequest = {
+        "user_id": 1,
+        // user_id: req.user.id
+        "cycle_id": cicle_id,
+        "request_degree_id": data.requestDegree.insertId,
+    }
+    data.userCycleRequest = await userCycleRequestModel.add(newUserCycleRequest);
     return data;
 }
 
-async function add(req = null) {
-    const added = await users.addUser(req.body);
-    return added;
-}
-
-async function update(req) {
-    const updated = await users.addUser(req);
-    return updated;
-}
-
-module.exports = { listAll, add, update, list };
+module.exports = { add };

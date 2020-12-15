@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const cycleController = require('../controllers/cycle');
+const requestDegreeController = require('../controllers/requestDegree');
 
 router.get('/', async (req, res) => {
     console.log("Estoy en la ruta listar ciclo");
@@ -21,9 +22,14 @@ router.get('/:id', async (req, res) => {
     });
 });
 
-router.post('/add', async (req, res) => {
-    await pool.query('insert into cycle set ?', [req])
-    res.redirect('./add');
+router.post('add/:cycle_id', async (req, res) => {
+
+    console.log(req.body);
+    console.log(req.params);
+    // await pool.query('insert into cycle set ?', [req])
+    // const requestDegree = requestDegreeController.add(req, res);
+    // console.log(requestDegree);
+    res.send(req.params);
 });
 
 router.post('/edit/:id', async (req, res) => {

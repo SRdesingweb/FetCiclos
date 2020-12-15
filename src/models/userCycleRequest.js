@@ -16,17 +16,11 @@ async function list(req) {
 }
 
 async function add(req) {
-    console.log("Añadiendo request degree");
-    console.log(req);
-    
-    const sql = 'insert into request_degree set ?';
+    console.log("Insertando user cycle request ");
+
+    const sql = 'INSERT INTO user_cycle_request SET ?';
     const data = await pool.query(sql, [req]);
     return data;
 }
 
-async function edit(fields, id) {
-    const data = await pool.query('UPDATE `request_degree` SET `status` = ? WHERE `request_degree`.`id` = ?', [fields.status, id]);
-    return data;
-}
-
-module.exports = { list, add, edit };
+module.exports = { list, add };
