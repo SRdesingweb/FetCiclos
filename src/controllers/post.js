@@ -21,7 +21,13 @@ async function listAll(req = null) {
 }
 
 async function add(req = null) {
-    const added = await posts.add(req.body);
+    const name = req.body.name;
+    // const idLoggedInUser = 1;
+    const newPost = {
+        "name":name,
+        // "user_id":idLoggedInUser
+    }
+    const added = await postModel.add(newPost);
     return added;
 }
 

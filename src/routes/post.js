@@ -12,5 +12,11 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.post('/add', async (req, res) => {
+    console.log("routes post add")
+    await postController.add(req, res);   
+});
+
+
 
 module.exports = router;

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModalCenter">
                 Chats
             </button>
 
@@ -60,18 +60,13 @@
         <div class="col-md-12 mx.auto">
             <div class="card mb-3">
                 <div class="card-body">
-                    <p><b>{{name}} </b></p>
-                    <form action="../add/" method="post">
+                    <p><b>Posts</b></p>
+                    <form action="post/add/" method="post">
 
                         <div class="form-group">
-                            <label for="name">texto</label>
+                            <label for="name">Texto de la públicación</label>
                             <input required type="text" class="form-control" id="name" name="name" value=""
                                 placeholder="Ingrese el texto del post">
-                        </div>
-                        <div class="form-group">
-                            <label for="degree_project_name">Nombre del proyecto de grado</label>
-                            <input required type="text" class="form-control" id="degree_project_name"
-                                name="degree_project_name" placeholder="Nombre del proyecto">
                         </div>
                         <div class="form-group">
                             <p>
