@@ -25,8 +25,8 @@ async function findChat(req, res) {
     });
 
     // res.json({
-    //     "chat": data.chat,
-    //      "user": data.user,
+        // "messsages": data.messsage,
+        // "users": data.user
     // });
 
 }

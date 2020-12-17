@@ -1,11 +1,12 @@
 const pool = require('../database');
 
 async function list(id) {
-    console.log("id = ");
-    console.log(id);
+    console.log("listando usuarios ***");
+    console.log("id = "+ id);
     let sql = 'SELECT DISTINCT `user`.*,  rol.`name` as rol_name FROM `user` INNER JOIN rol ON `user`.rol_id = rol.id ';
-    if (id != null && id > 0) {
-        sql += ' WHERE roles.id = ' + id
+    sql += ' WHERE `user`.id <> 1'
+    if (id && id > 0) {
+        sql += ' AND roles.id = ' + id
     }
     const users = await pool.query(sql);
     return users;

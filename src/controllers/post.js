@@ -1,34 +1,39 @@
 'use strict'
 
 const postModel = require('../models/post');
+const commentModel = require('../models/comment');
 const userModel = require('../models/user');
 
 
+async function listAll(req ,res) {
+    let data = {};
+    const id = req.params.id;
+    data.post = await postModel.list(id);
+    data.comment = await postModel.listComment(id);
+    data.user = await userModel.list();
+}
+
 async function list(req = null) {
     let data = {};
-    data.post = await postModel.list(req.params.id);
-    data.comment = await postModel.listMessage(req.params.id);
+    const id = req.params.id;
+    data.post = await postModel.list(id);
+    data.comment = await postModel.listComment(id);
     data.user = await userModel.list();
+    
     return data;
 }
 
-async function listAll(req = null) {
-    const data = {};
-    data.post = await postModel.list();
-    /* Se debe enviar id usuario, sino, devolverá todo */
-    console.log(data);
-    return data;
-}
-
-async function add(req = null) {
+async function add(req, res) {
     const name = req.body.name;
     // const idLoggedInUser = 1;
     const newPost = {
-        "name":name,
+        "name": name,
         // "user_id":idLoggedInUser
     }
-    const added = await postModel.add(newPost);
-    return added;
+    await postModel.add(newPost);
+    // return added;
+    req.flash('success', 'El post fué creado');
+    res.redirect('http://localhost:4000/post')
 }
 
-module.exports = { listAll, add, list };
+module.exports = { listAll, list, add };
