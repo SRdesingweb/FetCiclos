@@ -30,7 +30,7 @@ async function add(req) {
 }
 
 async function edit(fields, id) {
-    const data = await pool.query('UPDATE request_degree SET ? WHERE id` = ?', [fields, id], function (error, results) {
+    const data = await pool.query('UPDATE request_degree SET ? WHERE id = ?', [fields, id], function (error, results) {
         if (error) console.log(error.sqlMessage);
       });
     return data;

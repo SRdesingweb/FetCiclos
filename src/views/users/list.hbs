@@ -33,9 +33,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="eps_id">EPS</label>
-                            <select class="form-control" id="eps_id" name="eps_id">
-                                {{#each epss}}
+                            <label for="rol_id">Roles</label>
+                            <select class="form-control" id="rol_id" name="rol_id">
+                                {{#each roles}}
                                 <option value="{{id}}">{{name}}</option>
                                 {{/each}}
                             </select>
@@ -71,7 +71,6 @@
                             <th scope="col">Mail</th>
                             <th scope="col">Número de documento</th>
                             <th scope="col">Rol</th>
-                            <th scope="col">EPS</th>
                             <th scope="col" colspan="3">Operación</th>
 
                         </tr>
@@ -86,7 +85,6 @@
                             <th scope="row">{{email}}</th>
                             <td scope="row">{{document_number}}</td>
                             <th scope="row">{{role_name}}</th>
-                            <td>{{eps_name}}</td>
                             <td>
                                 <!--
                                 <a href="./edit/{{id}}" class="btn btn col-8">

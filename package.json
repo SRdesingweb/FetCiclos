@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SRdesingweb/FetCiclos.git"
+    "url": "git+https://github.com/SRdesingweb/FetCiclos.git",
+    "url2":"git+https://github.com/Romerolweb/FetCiclos/tree/parcial"
   },
   "keywords": [
     "FET",
