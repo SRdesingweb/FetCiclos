@@ -1,0 +1,80 @@
+<div class="container-fluid p-8">
+    <div class="row">
+        <div class="col-md-8 mx.auto">
+            {{#each requestDegree}}
+            {{#if state}}
+            <div class="card mb-3">
+                <div class="card-header">
+                    {{name}}
+                </div>
+                <div class="card-body">
+                    <form action="../edit" method="post">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="name">Nombre del Alumno</label>
+                                <input required type="text" class="form-control" id="name"
+                                    name="name" value="{{from}}"
+                                    placeholder="Nombre del Aspirante a grado">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="degree_project_name">Proyecto de grado</label>
+                                <input required type="text" class="form-control" id="degree_project_name"
+                                    name="degree_project_name" value="{{degree_project_name}}"
+                                    placeholder="Nombre del proyecto de grado">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="observation">Observación del Coordinador</label>
+                                <input required class="form-control" id="observation" name="observation"
+                                    value="{{observation}}" placeholder="{{observation}}" style="height: 99px;">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="degree_date">Fecha de graduación {{degree_date}}</label>
+                                <input required type="date" class="form-control" id="degree_date" name="degree_date"
+                                    value="{{degree_date}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">Estado de la aplicación</label>
+                            <select class="form-control" id="state" name="state" value="{{state}}">
+                                <option value="1">Pendiente</option>
+                                <option value="2">Aceptado</option>
+                                <option value="3">Denegado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input required type="hidden" class="form-control" id="id" name="id"
+                                value="{{id}}">
+                        </div>
+                        <button class="btn btn-primary mb-2"> Salvar </button>
+                    </form>
+                </div>
+            </div>
+            {{else}}
+            <div class="col-md-4 mb-3 mx-auto">
+                <div class="card card-body text-center">
+                    <p>No se encontró información relacionada con esta solicitud de grado <br>{{name}}</p>
+                    <a id="reload" href="#">Recargar</p></a>
+                </div>
+            </div>
+            {{/if}}
+
+
+
+            {{else}}
+            <div class="col-md-4 mx-auto">
+                <div class="card card-body text-center">
+                    <p>No se encontró información relacionada con esta solicitud de grado (Request Degree)</p>
+                    <a id="reload" href="#">Recargar</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
